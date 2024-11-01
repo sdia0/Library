@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".AddActivity"
+    android:gravity="center"
+    android:layout_marginHorizontal="20dp">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Добавить книгу"
+        android:textSize="24sp"
+        android:textAlignment="center"/>
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Название книги"
+        android:id="@+id/etTitle"
+        android:textSize="24sp"/>
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Автор"
+        android:id="@+id/etAuthor"
+        android:textSize="24sp"/>
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Год издания"
+        android:id="@+id/etYear"
+        android:textSize="24sp"/>
+
+    <Spinner
+        android:id="@+id/spGenre"
+        android:layout_width="match_parent"
+        android:layout_height="40dp" />
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Аннотация"
+        android:id="@+id/etDecsription"
+        android:textSize="24sp"/>
+
+    <ImageView
+        android:layout_gravity="center_horizontal"
+        android:scaleType="fitCenter"
+        android:padding="100dp"
+        android:background="#CFCFCF"
+        android:src="@drawable/gallery"
+        android:layout_width="match_parent"
+        android:layout_height="300dp"
+        android:layout_margin="10dp"
+        android:id="@+id/ivCover"/>
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Добавить"
+        android:textSize="20sp"
+        android:id="@+id/btnInsert"/>
+
+
+</LinearLayout>
