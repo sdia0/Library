@@ -94,8 +94,13 @@ public class ContentActivity extends AppCompatActivity {
             }
         });
 
+        ivCover.setBackgroundColor(Color.parseColor("#CFCFCF"));
+        ivCover.setPadding(100, 100, 100, 100);
+
         try {
             imagePath = Uri.parse(book.getCover());
+            ivCover.setBackgroundColor(Color.TRANSPARENT);
+            ivCover.setPadding(0, 0, 0, 0);
             ivCover.setImageURI(imagePath);
         } catch (Exception e) {
             requestPermission();
@@ -105,13 +110,23 @@ public class ContentActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                Book newBook = new Book(
+                Book newBook;
+                if (imagePath.toString().isEmpty()) {
+                    newBook = new Book(
+                            etTitle.getText().toString(),
+                            etAuthor.getText().toString(),
+                            etYear.getText().toString(),
+                            selectedGenre,
+                            etDescription.getText().toString());
+                }
+                else newBook = new Book(
                         etTitle.getText().toString(),
                         etAuthor.getText().toString(),
                         etYear.getText().toString(),
-                        selectedGenre,
                         imagePath.toString(),
+                        selectedGenre,
                         etDescription.getText().toString());
+
                 newBook.setId(book.getId());
 
                 try {
@@ -180,8 +195,6 @@ public class ContentActivity extends AppCompatActivity {
                 //for gallery
                 imagePath = data.getData();
                 ivCover.setImageURI(data.getData());
-                ivCover.setBackgroundColor(Color.TRANSPARENT);
-                ivCover.setPadding(0, 0, 0, 0);
             }
         }
     }

@@ -13,7 +13,13 @@ public class Book implements Serializable {
         this.genre = genre;
         this.description = description;
     }
-
+    public Book(String title, String author, String year, String genre, String description) {
+        this.title = title;
+        this.author = author;
+        this.year = year;
+        this.genre = genre;
+        this.description = description;
+    }
     public int getId() {
         return id;
     }

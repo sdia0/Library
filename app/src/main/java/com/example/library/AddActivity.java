@@ -124,9 +124,9 @@ public class AddActivity extends AppCompatActivity {
         if (resultCode==RESULT_OK){
             if (requestCode==GALLERY_REQUEST_CODE){
                 imagePath = data.getData();
-                ivCover.setImageURI(imagePath);
                 ivCover.setBackgroundColor(Color.TRANSPARENT);
                 ivCover.setPadding(0, 0, 0, 0);
+                ivCover.setImageURI(imagePath);
             }
         }
     }

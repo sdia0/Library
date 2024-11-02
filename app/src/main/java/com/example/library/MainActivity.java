@@ -38,7 +38,7 @@ public class MainActivity extends AppCompatActivity {
         btnAdd=findViewById(R.id.btnAdd);
 
 
-        fillData();
+        //fillData();
         ItemAdapter adapter= new ItemAdapter(this,
                 db.getData());
         listView.setAdapter(adapter);
