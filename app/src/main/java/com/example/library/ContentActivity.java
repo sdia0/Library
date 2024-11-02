@@ -1,6 +1,7 @@
 package com.example.library;
 
 import android.Manifest;
+import android.graphics.Color;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Build;
@@ -25,6 +26,8 @@ import androidx.core.app.ActivityCompat;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
+
+import java.util.List;
 
 public class ContentActivity extends AppCompatActivity {
     TextView tId;
@@ -71,7 +74,7 @@ public class ContentActivity extends AppCompatActivity {
         etDescription.setText(book.getDescription());
 
         // Создаем массив данных для Spinner
-        String[] spinnerItems = {"Жанр", "Фантастика", "Фэнтези", "Роман"};
+        List<String> spinnerItems = db.getGenres();
 
         // Создаем адаптер для Spinner
         ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, spinnerItems);
@@ -177,6 +180,8 @@ public class ContentActivity extends AppCompatActivity {
                 //for gallery
                 imagePath = data.getData();
                 ivCover.setImageURI(data.getData());
+                ivCover.setBackgroundColor(Color.TRANSPARENT);
+                ivCover.setPadding(0, 0, 0, 0);
             }
         }
     }

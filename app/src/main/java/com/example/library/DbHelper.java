@@ -29,13 +29,31 @@ public class DbHelper extends SQLiteOpenHelper {
                 "genre TEXT not null," +
                 "description TEXT not null)");
 
-        /*db.execSQL("create table genres(" +
-                "_id INTEGER primary key autoincrement," +
-                "name TEXT not null," +
-                "email TEXT not null unique," +
-                "image TEXT)");*/
-//add name/email
-//        db.execSQL("insert into people(name,email) values (\"Tom\",\"tom@gmail.com\")");
+        db.execSQL("create table genres(" +
+                "genre TEXT not null)");
+
+        String[] genres = {"Жанры", "Художественная литература", "Научная литература", "Научная фантастика",
+                "Фэнтези", "Детектив", "Триллер", "Роман"};
+        for (String genre : genres) {
+            db.execSQL("INSERT INTO genres (genre) VALUES (?)", new Object[]{genre});
+        }
+    }
+
+    // Метод для получения массива жанров
+    public List<String> getGenres() {
+        List<String> genres = new ArrayList<>();
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor cursor = db.rawQuery("SELECT genre FROM genres", null);
+
+        if (cursor.moveToFirst()) {
+            do {
+                genres.add(cursor.getString(0));
+            } while (cursor.moveToNext());
+        }
+
+        cursor.close();
+        db.close();
+        return genres;
     }
 
     @Override

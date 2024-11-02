@@ -1,6 +1,8 @@
 package com.example.library;
 
 import android.content.Intent;
+import android.database.sqlite.SQLiteDatabase;
+import android.graphics.Color;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
@@ -20,6 +22,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
+
+import java.util.List;
 
 public class AddActivity extends AppCompatActivity {
     EditText etTitle, etAuthor, etYear, etDescription;
@@ -54,7 +58,7 @@ public class AddActivity extends AppCompatActivity {
         db = new DbHelper(this);
 
         // Создаем массив данных для Spinner
-        String[] spinnerItems = {"Жанр", "Фантастика", "Фэнтези", "Роман"};
+        List<String> spinnerItems = db.getGenres();
 
         // Создаем адаптер для Spinner
         ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, spinnerItems);
@@ -121,6 +125,8 @@ public class AddActivity extends AppCompatActivity {
             if (requestCode==GALLERY_REQUEST_CODE){
                 imagePath = data.getData();
                 ivCover.setImageURI(imagePath);
+                ivCover.setBackgroundColor(Color.TRANSPARENT);
+                ivCover.setPadding(0, 0, 0, 0);
             }
         }
     }
